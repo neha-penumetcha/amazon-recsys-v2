@@ -115,8 +115,15 @@ def search(query: str, top_k: int = 10, min_rating: float = 0.0, max_price: floa
 
 
 # ── UI ────────────────────────────────────────────────────────────────────────
-st.title("🛍️ Amazon Product Finder")
-st.markdown("Describe what you're looking for in plain English — brands, features, budget, anything.")
+col_title, col_home = st.columns([6, 1])
+with col_title:
+    st.title("🛍️ Amazon Product Finder")
+    st.markdown("Describe what you're looking for in plain English — brands, features, budget, anything.")
+with col_home:
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🏠 Home"):
+        st.session_state.pop('query', None)
+        st.rerun()
 
 # Search bar
 default_query = st.session_state.pop('query', '')
