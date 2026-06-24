@@ -119,10 +119,12 @@ st.title("🛍️ Amazon Product Finder")
 st.markdown("Describe what you're looking for in plain English — brands, features, budget, anything.")
 
 # Search bar
+default_query = st.session_state.pop('query', '')
 query = st.text_input(
     label="Search",
     placeholder="e.g. lightweight laptop for gaming under $800, or noise cancelling headphones for travel",
-    label_visibility="collapsed"
+    label_visibility="collapsed",
+    value=default_query
 )
 
 # Filters
